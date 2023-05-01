@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+
+{% block title %}Work experience{% endblock title %}
+
+{% block content %}
+    {% for job in jobs_list %}
+        <div>
+            <p><a href="{{ job.get_absolute_url }}">{{ job.company }} {{ job.position }}</a></p>
+            <p>{{ job.start_date }} - {{ job.end_date }}</p>
+            <p>{{ job.description }}</p>
+            <p>Comments: {{ job.comments.count }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}

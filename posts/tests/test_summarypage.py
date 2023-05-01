@@ -22,7 +22,7 @@ class AboutPageTests(SimpleTestCase):
             self.response, "Hi there! I should not be on the page.")
 
     def test_summarypage_url_resolves_aboutpageview(self):
-        view = resolve("/about/")
+        view = resolve("/summary/")
         self.assertEqual(
             view.func.__name__,
             SummaryPageView.as_view().__name__

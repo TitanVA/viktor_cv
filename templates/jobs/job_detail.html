@@ -1,0 +1,18 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ job.title }}{% endblock title %}
+
+{% block content %}
+    <div class="summary-detail">
+        <h2><a href="">{{ job.company }}</a> {{ company.position }}</h2>
+        <p>Start: {{ job.start_date }} End: {{ job.end_date }}</p>
+        <p>Description: {{ job.description }}</p>
+        <p>Author: {{ job.author }}</p>
+        <p>Comments:
+            {% for comment in job.comments_set.all %}
+                <p>comment.comment</p>
+                <p>comment.author</p>
+            {% endfor %}
+        </p>
+    </div>
+{% endblock content %}

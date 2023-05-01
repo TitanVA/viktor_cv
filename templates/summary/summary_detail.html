@@ -1,0 +1,18 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ summary.title }}{% endblock title %}
+
+{% block content %}
+    <div class="summary-detail">
+        <h2><a href="">{{ summary.title }}</a> {{ summary.category }}</h2>
+        <p>Text: {{ summary.text }}</p>
+        <p>Created: {{ summary.created_date }} Updated: {{ summary.updated_date }}</p>
+        <p>Author: {{ summary.author }}</p>
+        <p>Comments:
+            {% for comment in summary.comments_set.all %}
+                <p>comment.comment</p>
+                <p>comment.author</p>
+            {% endfor %}
+        </p>
+    </div>
+{% endblock content %}

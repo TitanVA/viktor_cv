@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+
+{% block title %}Summary{% endblock title %}
+
+{% block content %}
+    {% for summary in summary_list %}
+        <div>
+            <p><a href="{{ summary.get_absolute_url }}">{{ summary.title }}</a> {{ summary.category }}</p>
+            <p>{{ summary.text }}</p>
+            <p>Created: {{ summary.created_date }}</p>
+            <p>Comments: {{ summary.comments.count }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}
