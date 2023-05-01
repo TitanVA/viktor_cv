@@ -2,19 +2,31 @@ version: "3.9"
 services:
   web:
     build: .
-    ports:
-      - "8000:8000"
-    command: python manage.py runserver 0.0.0.0:8000
+    expose:
+      - 8000
+    command: gunicorn --bind 0.0.0.0:8000 config.wsgi
     volumes:
       - .:/code
+      - static_volume:/code/staticfiles
     env_file:
       - .env
+    depends_on:
+      - db
   db:
     image: postgres:15-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - .env
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/code/staticfiles
+    ports:
+      - 80:80
+    depends_on:
+      - web
 
 volumes:
   postgres_data:
+  static_volume:

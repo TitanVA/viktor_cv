@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from environs import Env
+
 env = Env()
 env.read_env()
 
@@ -156,3 +157,10 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 DEFAULT_FROM_EMAIL = "viktorbezai@gmail.com"
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://mydomain.com', 'https://127.0.0.1:1337',
+    'http://mydomain.com', 'http://127.0.0.1:1337',
+    'https://viktor-bezai.site', 'https://89.108.115.121',
+    'http://viktor-bezai.site', 'http://89.108.115.121',
+]
