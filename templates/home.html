@@ -4,6 +4,26 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-    <h1>This is Viktor's Bezai CV page</h1>
-    <img class="viktors_photo" src="{% static 'images/viktor_bezai.png' %}">
+    <div class="main_content">
+        <div class="content">
+            <img class="avatar" src="{% static 'images/viktor_bezai.png' %}" alt="photo">
+        </div>
+        <div class="cv">
+            <p>
+                Hello! My name is Viktor!<br>
+                And this is my resume-page<br>
+                Also you can see Swagger here<br>
+            </p>
+            <p>
+                <a href="mailto:test@example.com">viktorbezai@gmail.com</a>
+            </p>
+            <p>
+                <a href="https://www.linkedin.com/in/viktor-bezai-59597b230/" target="_blank">linkedin</a>
+            </p>
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;<a href="{% static 'images/CV_Bezai_Viktor.pdf' %}" target="_blank">Download CV</a>
+            </p>
+        </div>
+    </div>
+
 {% endblock content %}
