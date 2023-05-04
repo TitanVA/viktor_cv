@@ -19,12 +19,23 @@ services:
       - .env
   nginx:
     build: ./nginx
-    volumes:
-      - ./staticfiles:/code/staticfiles
     ports:
       - 80:80
+      - 443:443
+    restart: always
     depends_on:
       - web
+      - certbot
+    volumes:
+      - ./staticfiles:/code/staticfiles
+      - ./nginx/conf/:/etc/nginx/conf.d/:ro
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
 
 volumes:
   postgres_data:
