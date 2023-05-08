@@ -1,17 +1,24 @@
-# Pull base image
+# pull official base image
 FROM python:3.11-alpine
 
-# Set environment variables
-ENV PIP_DISABLE_PIP_VERSION_CHECK 1
+# set work directory
+WORKDIR /code
+
+# set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Set work directory
-WORKDIR /code
+RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
 
-# Install dependencies
+# install dependencies
+RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-# Copy project
+# copy project
 COPY . .
+
+RUN chmod +x entrypoint.sh
+
+# run entrypoint.sh
+ENTRYPOINT ["/code/entrypoint.sh"]
