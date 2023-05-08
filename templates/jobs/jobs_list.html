@@ -7,7 +7,7 @@
         <div>
             <p><a href="{{ job.get_absolute_url }}">{{ job.company }} {{ job.position }}</a></p>
             <p>{{ job.start_date }} - {{ job.end_date }}</p>
-            <p>{{ job.description }}</p>
+            <p>{{ job.description|linebreaks }}</p>
             <p>Comments: {{ job.comments.count }}</p>
         </div>
     {% endfor %}
